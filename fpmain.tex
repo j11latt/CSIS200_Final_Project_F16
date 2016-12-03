@@ -1,0 +1,75 @@
+\documentclass{revtex4}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amssymb}
+
+\begin{document}
+
+\title{Predicting the Weather \\
+\large Final Project}
+
+\author{Julie Lattanzio}
+\affiliation{Siena College, Loudonville, NY}
+
+\begin{abstract}
+    This project was a standard probability problem. However, probability can often take a long time to calculate analytically. So in this case, the programming language python was used. This method is a numerical approach, and is also known as the Monte Carlo Method. Different percentages were given for the chance of rain in different situations, and similar coding methods, such as functions and loops, were used to solve all problems numerically.
+\end{abstract}
+
+\maketitle
+
+\section*{Introduction}
+
+The Monte Carlo method is most commonly used when large sums of calculations are needed. For example, if one needed to find the summation of pi using a quarter circle with random dots placed on the graph, or the percent chance of an event occuring, such as if any two people in a room of 100 could have the same birthday.
+
+In this experiment, Monte Carlo was used to find the percent chance of rain in different scenarios. First for one day in a month, then eight, and finally the total amount of rainfall per month given different percentages for the probabilities of different amounts per day, if it rained on said day. 
+
+\section*{Question 1}
+
+Suppose there is a 20\% chance it will rain on any given day in a month. What are the odds that that rains on one and only one day in a month?
+
+The probability that it rains is 20\% or 0.2 times 1, for one day in a month. AND there is the probability that it does not rain, which is 80\% on the other 29 days in the month. Since the probability is AND, you multiply them. So:
+
+
+\[0.2 \times 0.8^{29} = 0.0003\]
+\[0.0003 \times 100\% = 0.031\% \]
+
+However, this value must be multiplied by 30 days per month, since the prompt is only asking for one day, and there are thirty different possibilities.  
+
+\[0.031 \times 30 = 0.928 \]
+
+So, there is a 0.928\% chance of it raining on one and only one day in the month. 
+
+In python, a function is written to hold that if a random value, found later on, is 0.20, or 20\%, then that value is used in the loop. The loop is keeping track of how many days it rains in a given month. A random number is generated for the number of days. Then, if the loop finds a month where it rained one and only one day, then it will add that month to the total number of months where this happened. After this, the total number of days that it rained it reset to zero so it can only analyze one month at a time. The percent chance of it raining on one and only one day in the month, is then the number of months where it rained only one day, over the total number of months tested, times 100\%. 
+
+\section*{Question 2}
+
+Suppose there is a 10\% chance that it will rain on any given day in a month. What are the odds that it rains at least 8 days (in any order) that month?
+
+In python, a function is written to hold that if a random value, found later on, is 0.20, or 20\%, then that value is used in the loop. The loop is keeping track of how many days it rains in a given month. A random number is generated for the number of days. Then, if the loop finds a month where it rained eight days only, then it will add that month to the total number of months where this happened. After this, the total number of days that it rained it reset to zero so it can only analyze one month at a time. The percent chance of it raining on eight days in the month, is then the number of months where it rained only one day, over the total number of months tested, times 100\%. 
+
+\section*{Question 3}
+
+In python, a function is written to hold that if a random value, found later on, is a certain percentage, then that value is used to be the amount of rain for each day in the month. 
+
+The loop is keeping track of how many days it rains in a given month. A random number is generated for the each day it rains. Then, if the loop finds a month where it rained more than 10 cm, then it will add that month to the total number of months where this happened. After this, the total number of days that it rained it reset to zero so it can only analyze one month at a time. 
+
+The percent chance of it raining more than 10 cm in the month, is then the number of months where it rained only one day, over the total number of months tested, times 100\%. 
+
+To get a closer look at the data, a histogram is created to show a visual representation of all the expected rainfall values. 
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.3\textwidth]{ScreenShot2016-12-02at10_36_57PM.png}
+\end{figure}
+
+Then, the total average rainfall per month is found by a simple mean function that collects all of the amounts of rainfall for each of the months tested, and averages them. 
+
+In any experiment, there is error. The last part of this section was to find the error of the average rainfall. A function from scipy (erf) can be used to do this. Then the upper and lower 2.5 \%to use as ranges. 
+
+\end{document}
